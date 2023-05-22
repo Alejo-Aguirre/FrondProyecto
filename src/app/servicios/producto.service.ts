@@ -16,7 +16,18 @@ export class ProductoService {
         "Descripcion 1",
         3500000,
         2,
-        ["https://picsum.photos/450/225", "https://picsum.photos/450/225"],
+        ["https://www.lg.com/cl/images/televisores/md07533310/gallery/D-01C.jpg"],
+        ["TECNOLOGIA"]
+      )
+    );
+    this.productos.push(
+      new ProductoGetDTO(
+        1,
+        "Televisor Samnsung 4k",
+        "Descripcion 2",
+        3800000,
+        2,
+        ["https://images.samsung.com/is/image/samsung/p6pim/pe/un55bu8200gxpe/gallery/pe-crystaluhd-bu8000-452513-un55bu8200gxpe-535540407?$650_519_PNG$"],
         ["TECNOLOGIA"]
       )
     );
