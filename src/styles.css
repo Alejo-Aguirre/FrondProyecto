@@ -61,3 +61,11 @@ header {
     text-decoration: none;
     color: #333;
   }
+
+  .image-item{
+    max-height: 225px; 
+    overflow: hidden;
+    }
+    .image-item img{ 
+    width: 100%;
+    }
