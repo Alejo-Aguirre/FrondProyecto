@@ -20,15 +20,21 @@
         </li>
         <li><a routerLink="/crear-producto" class="nav-link px-2 text-black">Crear Producto</a></li>
         <li><a routerLink="/gestion-productos" class="nav-link px-2 text-black">Mis productos</a></li>
-        <li><a routerLink="" class="nav-link px-2 text-black">Mis compras</a></li>
+        <li><a routerLink="/gestion-compras" class="nav-link px-2 text-black">Mis compras</a></li>
         <li><a routerLink="" class="nav-link px-2 text-black">Carrito</a></li>
       </ul>
       <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search" (submit)="iraBusqueda(textoBusqueda.value)">
         <input #textoBusqueda type="search" class="form-control form-control-dark text-bg-dark" placeholder="Search..." aria-label="Search">
       </form>
       <div class="text-end">
-        <button type="button" routerLink="/login" class="btn btn-outline-dark me-2">Login</button>
-        <button type="button" routerLink="/registro" class="btn btn-warning">Sign-up</button>
+        <button type="button" routerLink="/login" class="btn btn-outline-dark me-2">
+          <i class="fa-solid fa-sign-in"></i> Login
+        </button>
+        
+        <button type="button" routerLink="/registro" class="btn btn-warning">
+          <i class="fa-solid fa-user-plus"></i> Sign-up
+        </button>
+        
       </div>
     </div>
   </div>

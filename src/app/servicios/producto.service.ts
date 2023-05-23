@@ -34,15 +34,53 @@ export class ProductoService {
     );
     this.productos.push(
       new ProductoGetDTO(
-        2,
-        "Tenis Nike",
-        "Descripción 2",
-        650000,
+        3,
+        "Smartphone iPhone 12",
+        "Potente smartphone con cámara de alta resolución y pantalla Retina.",
+        879000,
+        5,
+        ["https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/iphone-12-select-2020?wid=470&hei=556&fmt=png-alpha&.v=1604343705000"],
+        ["TECNOLOGIA"]
+      )
+    );
+    this.productos.push(
+      new ProductoGetDTO(
         4,
-        ["https://picsum.photos/450/225"],
+        "Zapatillas Adidas Ultraboost",
+        "Zapatillas deportivas con tecnología de amortiguación y gran comodidad.",
+        189900,
+        7,
+        ["https://assets.adidas.com/images/w_600,f_auto,q_auto/1fc445687ea5477d9ebdabef00b40901_9366/Ultraboost_Zapatillas_Negro_FZ0420_01_standard.jpg"],
         ["ROPA", "DEPORTE"]
       )
     );
+    
+    this.productos.push(
+      new ProductoGetDTO(
+        5,
+        "Monitor Gaming ASUS",
+        "Monitor de alta velocidad de respuesta y excelente calidad de imagen.",
+        599999,
+        3,
+        ["https://www.asus.com/media/global/products/9sK9TjACIgrQku8J/P_setting_fff_1_90_end_500.png"],
+        ["TECNOLOGIA"]
+      )
+    );
+    
+    this.productos.push(
+      new ProductoGetDTO(
+        6,
+        "Cámara Canon EOS Rebel T7i",
+        "Cámara réflex digital con sensor de imagen de alta resolución.",
+        1299999,
+        4,
+        ["https://www.canon-europe.com/media/eos-800d-hero_tcm13-1621932.png"],
+        ["TECNOLOGIA", "FOTOGRAFIA"]
+      )
+    );
+  
+    
+    
 
     // Agregar más productos aquí...
 

@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { ProductoDTO } from 'src/app/modelo/producto-dto';
 
 @Component({
@@ -6,17 +7,22 @@ import { ProductoDTO } from 'src/app/modelo/producto-dto';
   templateUrl: './crear-producto.component.html',
   styleUrls: ['./crear-producto.component.css']
 })
-export class CrearProductoComponent {
+export class CrearProductoComponent implements OnInit {
   producto: ProductoDTO;
   categorias: string[];
-  constructor() {
+  modoEdicion: boolean = false;
+
+  constructor(private route: ActivatedRoute) {
     this.categorias = [];
     this.producto = new ProductoDTO();
   }
 
-  
-
   ngOnInit(): void {
+    this.route.queryParams.subscribe(params => {
+      this.modoEdicion = params['modoEdicion'] === 'true';
+    });
+
+
     this.categorias.push('Tecnología');
     this.categorias.push('Hogar');
     this.categorias.push('Deportes');
@@ -32,6 +38,7 @@ export class CrearProductoComponent {
   }
 
   archivos!: FileList;
+
   public crearProducto() {
     if (this.archivos != null && this.archivos.length > 0) {
       console.log(this.producto);

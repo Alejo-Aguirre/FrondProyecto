@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ProductoGetDTO } from 'src/app/modelo/producto-get-dto';
 import { ProductoService } from 'src/app/servicios/producto.service';
 
@@ -11,8 +12,12 @@ export class GestionProductosComponent implements OnInit {
   productos: ProductoGetDTO[];
   seleccionados: ProductoGetDTO[];
   textoBtnEliminar: string;
+  seleccionado!:ProductoGetDTO; 
+   
+btnTexto:string = "";
+  iconTexto:string = "";
 
-  constructor(private productoServicio: ProductoService) {
+  constructor(private router: Router,private productoServicio: ProductoService) {
     this.productos = [];
     this.seleccionados = [];
     this.textoBtnEliminar = "Eliminar";
@@ -44,6 +49,14 @@ export class GestionProductosComponent implements OnInit {
     }
   }
 
+  redireccionarACrearProducto(modoEdicion: boolean) {
+    this.router.navigate(['/crear-producto'], { queryParams: { modoEdicion: modoEdicion } });
+  }
+  
+  public actualizar(item:ProductoGetDTO){ 
+    this.btnTexto = "Actualizar";
+    this.iconTexto = "pencil";
+  }
   public borrarProductos(){
     this.seleccionados.forEach(e => {
     this.productos = this.productos.filter(i => i != e); 

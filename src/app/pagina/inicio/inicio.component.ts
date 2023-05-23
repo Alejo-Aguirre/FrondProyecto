@@ -9,6 +9,7 @@ import { ProductoGetDTO } from 'src/app/modelo/producto-get-dto';
 })
 export class InicioComponent implements OnInit {
   productos: ProductoGetDTO[];
+  viewMode: string = 'grid'; // Establece la vista de cuadrícula como predeterminada
 
   constructor(private productoService: ProductoService) {
     this.productos = [];
@@ -16,6 +17,10 @@ export class InicioComponent implements OnInit {
 
   ngOnInit(): void {
     this.productos = this.productoService.listar();
+  }
+
+  changeView(mode: string) {
+    this.viewMode = mode;
   }
 }
 

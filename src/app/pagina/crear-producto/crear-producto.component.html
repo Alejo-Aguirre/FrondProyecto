@@ -43,7 +43,8 @@
     </div>
     <button type="submit" [disabled]="!f.valid" class="btn btn-primary">
       <i class="fa-solid fa-circle-plus me-1"></i>
-      Crear producto
+      {{ modoEdicion ? 'Guardar producto' : 'Crear producto' }}
     </button>
   </form>
 </div>
+

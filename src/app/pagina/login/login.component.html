@@ -1,17 +1,26 @@
-
-<form #f="ngForm" (ngSubmit)="iniciarSesion()">
-  <div>
-    <label>Email: </label>
-    <input type="email" name="email" [(ngModel)]="sesion.email" required />
-  </div>
-  <div>
-    <label>Contraseña: <colgroup></colgroup> </label>
-    <input
-      type="password"
-      name="contrasenia"
-      [(ngModel)]="sesion.contrasenia"
-      required=""
-    />
-  </div>
-  <button type="submit" [disabled]="f.invalid">Iniciar Sesión</button>
-</form>
+<div class="d-flex justify-content-center align-items-center">
+  <form #f="ngForm" (ngSubmit)="iniciarSesion()" class="needs-validation">
+    <div class="mb-3">
+      <label for="email" class="form-label">Email:</label>
+      <input type="email" name="email" [(ngModel)]="sesion.email" class="form-control" id="email" required />
+      <div class="invalid-feedback">
+        Por favor, ingresa un email válido.
+      </div>
+    </div>
+    <div class="mb-3">
+      <label for="contrasenia" class="form-label">Contraseña:</label>
+      <input
+        type="password"
+        name="contrasenia"
+        [(ngModel)]="sesion.contrasenia"
+        class="form-control"
+        id="contrasenia"
+        required
+      />
+      <div class="invalid-feedback">
+        Por favor, ingresa una contraseña válida.
+      </div>
+    </div>
+    <button type="submit" class="btn btn-primary" [disabled]="f.invalid">Iniciar Sesión</button>
+  </form>
+</div>
