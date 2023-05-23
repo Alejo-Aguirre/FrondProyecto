@@ -50,7 +50,7 @@ export class ProductoService {
         "Zapatillas deportivas con tecnología de amortiguación y gran comodidad.",
         189900,
         7,
-        ["https://assets.adidas.com/images/w_600,f_auto,q_auto/1fc445687ea5477d9ebdabef00b40901_9366/Ultraboost_Zapatillas_Negro_FZ0420_01_standard.jpg"],
+        ["https://assets.adidas.com/images/w_600,f_auto,q_auto/8cb978de57934d0b9227aaea00df82c6_9366/Zapatillas_para_correr_Ultraboost_20_Negro_EG1341_01_standard.jpg"],
         ["ROPA", "DEPORTE"]
       )
     );
@@ -62,7 +62,7 @@ export class ProductoService {
         "Monitor de alta velocidad de respuesta y excelente calidad de imagen.",
         599999,
         3,
-        ["https://www.asus.com/media/global/products/9sK9TjACIgrQku8J/P_setting_fff_1_90_end_500.png"],
+        ["https://i.blogs.es/1bcbed/asus-tuf-gaming-vg27vq-2/1366_2000.jpeg"],
         ["TECNOLOGIA"]
       )
     );
@@ -74,7 +74,7 @@ export class ProductoService {
         "Cámara réflex digital con sensor de imagen de alta resolución.",
         1299999,
         4,
-        ["https://www.canon-europe.com/media/eos-800d-hero_tcm13-1621932.png"],
+        ["https://falabella.scene7.com/is/image/FalabellaCO/27321550_5?wid=800&hei=800&qlt=70"],
         ["TECNOLOGIA", "FOTOGRAFIA"]
       )
     );
