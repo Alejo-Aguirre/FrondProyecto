@@ -10,6 +10,8 @@ import { RegistroComponent } from './pagina/registro/registro.component';
 import { CrearProductoComponent } from './pagina/crear-producto/crear-producto.component';
 import { BusquedaComponent } from './pagina/busqueda/busqueda.component';
 import { GestionProductosComponent } from './pagina/gestion-productos/gestion-productos.component';
+import { FiltrarProductosComponent } from './pagina/filtrar-productos/filtrar-productos.component';
+
 
 @NgModule({
   declarations: [
@@ -19,7 +21,8 @@ import { GestionProductosComponent } from './pagina/gestion-productos/gestion-pr
     RegistroComponent,
     CrearProductoComponent,
     BusquedaComponent,
-    GestionProductosComponent
+    GestionProductosComponent,
+    FiltrarProductosComponent
 
   ],
   imports: [

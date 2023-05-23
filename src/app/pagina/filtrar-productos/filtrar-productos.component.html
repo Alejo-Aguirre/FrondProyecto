@@ -1,0 +1,26 @@
+<h2>Filtrar productos por categoría</h2>
+
+<div class="form-group">
+  <label for="categoria" class="visually-hidden">Categoría:</label>
+  <select class="form-select" name="categoria" [(ngModel)]="selectedCategoria" (change)="filtrarProductosPorCategoria(selectedCategoria)" required>
+    <option value="" selected>Categoría</option>
+    <option *ngFor="let categoria of categorias" [value]="categoria">{{ categoria }}</option>
+  </select>
+</div>
+
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-md-4" *ngFor="let producto of productos">
+      <div class="card mb-4">
+        <img class="card-img-top" [src]="producto.imagenes[0]" alt="Imagen del producto">
+        <div class="card-body">
+          <h5 class="card-title">{{ producto.nombre }}</h5>
+          <p class="card-text">{{ producto.descripcion }}</p>
+          <p class="card-text">Precio: {{ producto.precio | currency }}</p>
+          <p class="card-text">Stock: {{ producto.unidades }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div *ngIf></div>
+
