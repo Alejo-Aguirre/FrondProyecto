@@ -1,14 +1,19 @@
 import { Injectable } from '@angular/core';
 import { ProductoGetDTO } from '../modelo/producto-get-dto';
+import { ProductoDTO } from '../modelo/producto-dto';
+import { MensajeDTO } from '../modelo/mensaje-dto';
+import { Observable } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductoService {
+  private proURL = "http://localhost:8080/api/producto";
   productos: ProductoGetDTO[];
 
-  constructor() {
+  constructor(private http: HttpClient) {
     this.productos = [];
     this.productos.push(
       new ProductoGetDTO(
@@ -86,6 +91,10 @@ export class ProductoService {
 
   }
 
+  public crear(producto: ProductoDTO): Observable<MensajeDTO> {
+    return this.http.post<MensajeDTO>(`${this.proURL}/crear`, producto);
+  }
+ 
 
   public listar(): ProductoGetDTO[] {
     return this.productos;
