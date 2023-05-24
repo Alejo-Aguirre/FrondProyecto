@@ -1,8 +1,8 @@
 <div class="d-flex justify-content-center align-items-center">
-  <form #f="ngForm" (ngSubmit)="iniciarSesion()" class="needs-validation">
+  <form #f="ngForm" (ngSubmit)="login()" class="needs-validation">
     <div class="mb-3">
       <label for="email" class="form-label">Email:</label>
-      <input type="email" name="email" [(ngModel)]="sesion.email" class="form-control" id="email" required />
+      <input type="email" name="email" [(ngModel)]="loginUser.email" class="form-control" id="email" required />
       <div class="invalid-feedback">
         Por favor, ingresa un email válido.
       </div>
@@ -12,7 +12,7 @@
       <input
         type="password"
         name="contrasenia"
-        [(ngModel)]="sesion.contrasenia"
+        [(ngModel)]="loginUser.contrasenia"
         class="form-control"
         id="contrasenia"
         required
@@ -22,5 +22,6 @@
       </div>
     </div>
     <button type="submit" class="btn btn-primary" [disabled]="f.invalid">Iniciar Sesión</button>
+    <app-alerta [alerta]="alerta"></app-alerta> 
   </form>
 </div>

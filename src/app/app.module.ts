@@ -11,6 +11,9 @@ import { CrearProductoComponent } from './pagina/crear-producto/crear-producto.c
 import { BusquedaComponent } from './pagina/busqueda/busqueda.component';
 import { GestionProductosComponent } from './pagina/gestion-productos/gestion-productos.component';
 import { FiltrarProductosComponent } from './pagina/filtrar-productos/filtrar-productos.component';
+import { HttpClientModule } from '@angular/common/http';
+import { AlertaComponent } from './pagina/alerta/alerta.component';
+
 
 
 @NgModule({
@@ -22,13 +25,15 @@ import { FiltrarProductosComponent } from './pagina/filtrar-productos/filtrar-pr
     CrearProductoComponent,
     BusquedaComponent,
     GestionProductosComponent,
-    FiltrarProductosComponent
-
+    FiltrarProductosComponent,
+    AlertaComponent
+    
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ProductoService } from './servicios/producto.service';
 import { ProductoGetDTO } from 'src/app/modelo/producto-get-dto';
+import { HttpClientModule } from '@angular/common/http';
 
 @Component({
   selector: 'app-root',
