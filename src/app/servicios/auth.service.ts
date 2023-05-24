@@ -20,4 +20,5 @@ export class AuthService {
     public login(sesion:SesionDTO):Observable<MensajeDTO>{
       return this.http.post<MensajeDTO>(`${this.authURL}/login`, sesion); 
       }
+      
 }

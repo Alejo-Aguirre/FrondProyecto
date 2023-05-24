@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ProductoDTO } from 'src/app/modelo/producto-dto';
+import { CategoriaService } from 'src/app/servicios/categoria.service';
+import { ImagenService } from 'src/app/servicios/imagen.service';
 
 @Component({
   selector: 'app-crear-producto',
@@ -12,7 +14,11 @@ export class CrearProductoComponent implements OnInit {
   categorias: string[];
   modoEdicion: boolean = false;
 
-  constructor(private route: ActivatedRoute) {
+  constructor(
+    private route: ActivatedRoute,
+    private imagenService: ImagenService,
+    private categoriaService: CategoriaService
+  ) {
     this.categorias = [];
     this.producto = new ProductoDTO();
   }
@@ -20,14 +26,20 @@ export class CrearProductoComponent implements OnInit {
   ngOnInit(): void {
     this.route.queryParams.subscribe(params => {
       this.modoEdicion = params['modoEdicion'] === 'true';
+      this.cargarCategorias();
     });
+  }
 
-
-    this.categorias.push('Tecnología');
-    this.categorias.push('Hogar');
-    this.categorias.push('Deportes');
-    this.categorias.push('Moda');
-    this.categorias.push('Mascotas');
+  private cargarCategorias() {
+    this.categoriaService.listar().subscribe(
+      data => {
+        this.categorias = data.respuesta;
+      },
+      error => {
+        console.log('Ocurrió un error al cargar las categorías.');
+        // Mostrar un mensaje de error genérico o realizar alguna otra acción
+      }
+    );
   }
 
   onFileChange(event: any) {
