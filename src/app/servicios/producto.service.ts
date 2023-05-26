@@ -4,6 +4,8 @@ import { ProductoDTO } from '../modelo/producto-dto';
 import { MensajeDTO } from '../modelo/mensaje-dto';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
+import { catchError, map } from 'rxjs/operators';
+import { throwError } from 'rxjs';
 
 
 @Injectable({
@@ -15,6 +17,8 @@ export class ProductoService {
 
   constructor(private http: HttpClient) {
     this.productos = [];
+
+    
     this.productos.push(
       new ProductoGetDTO(
         1,
@@ -83,19 +87,35 @@ export class ProductoService {
         ["TECNOLOGIA", "FOTOGRAFIA"]
       )
     );
-  
-    
-    
 
+    this.cargarProductos().subscribe(
+      (productos: ProductoGetDTO[]) => {
+        this.productos.push(...productos);
+      },
+      (error) => {
+        console.error('Error al cargar los productos desde la base de datos:', error);
+      }
+    );
+    
     // Agregar más productos aquí...
 
   }
 
+  private cargarProductos(): Observable<ProductoGetDTO[]> {
+    return this.http.get<ProductoGetDTO[]>(`${this.proURL}/listarproductos`).pipe(
+      catchError((error: any): Observable<ProductoGetDTO[]> => {
+        console.error('Error al cargar los productos desde la base de datos. Se utilizarán los productos quemados.', error);
+        return throwError('Error al cargar los productos');
+      }),
+      map((productos: ProductoGetDTO[]) => {
+        return productos;
+      })
+    );
+  }
   public crear(producto: ProductoDTO): Observable<MensajeDTO> {
     return this.http.post<MensajeDTO>(`${this.proURL}/crear`, producto);
   }
- 
-
+  
   public listar(): ProductoGetDTO[] {
     return this.productos;
   }
@@ -113,4 +133,6 @@ export class ProductoService {
     });
     return Array.from(categorias);
   }
+
+
 }

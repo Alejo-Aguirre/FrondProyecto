@@ -1,0 +1,25 @@
+select::-moz-selection {
+    background-color: blue;
+    color: white;
+  }
+  
+  select::selection {
+    background-color: blue;
+    color: white;
+  }
+  
+  select option::-moz-selection {
+    background-color: blue;
+    color: white;
+  }
+  
+  select option::selection {
+    background-color: blue;
+    color: white;
+  }
+  
+  /* Estilo adicional para resaltar la opción seleccionada */
+  select option:checked {
+    background-color: rgb(89, 202, 240);
+  }
+  

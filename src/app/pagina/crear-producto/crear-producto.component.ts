@@ -16,12 +16,14 @@ export class CrearProductoComponent implements OnInit {
   categorias: string[];
   modoEdicion: boolean = false;
   alerta!: Alerta;
+  archivos!: FileList;
+  codigoUsuario: string = '1'; // Código del usuario en la base de datos
 
   constructor(
     private route: ActivatedRoute,
     private imagenService: ImagenService,
     private categoriaService: CategoriaService,
-    private productoService : ProductoService
+    private productoService: ProductoService
   ) {
     this.categorias = [];
     this.producto = new ProductoDTO();
@@ -48,17 +50,16 @@ export class CrearProductoComponent implements OnInit {
 
   public subirImagenes() {
     if (this.archivos != null && this.archivos.length > 0) {
-      const objeto = this;
       const formData = new FormData();
       formData.append('file', this.archivos[0]);
       this.imagenService.subir(formData).subscribe({
         next: data => {
-          objeto.producto.imagenes.push(data.respuesta.url);
-          objeto.alerta = new Alerta('Las imágenes se subieron correctamente', 'success');
+          this.producto.imagenes.push(data.respuesta.url);
+          this.alerta = new Alerta('Las imágenes se subieron correctamente', 'success');
         },
         error: error => {
           console.log(error.error);
-          objeto.alerta = new Alerta('Error al subir las imágenes', 'danger');
+          this.alerta = new Alerta('Error al subir las imágenes', 'danger');
         }
       });
     } else {
@@ -66,6 +67,9 @@ export class CrearProductoComponent implements OnInit {
       this.alerta = new Alerta('Debe seleccionar al menos una imagen y subirla', 'danger');
     }
   }
+
+ 
+  
   onFileChange(event: any) {
     this.archivos = event.target.files;
     if (event.target.files.length > 0) {
@@ -74,20 +78,42 @@ export class CrearProductoComponent implements OnInit {
     }
   }
 
-  archivos!: FileList;
-
-  
   public crearProducto() {
-    const objeto = this;
-    this.productoService.crear(this.producto).subscribe({
+        this.productoService.crear(this.producto).subscribe({
       next: data => {
-        objeto.alerta = new Alerta('El producto se creó correctamente', 'success');
+        this.alerta = new Alerta('El producto se creó correctamente', 'success');
       },
       error: error => {
-        objeto.alerta = new Alerta('Error al crear el producto', 'danger');
+        this.alerta = new Alerta('Error al crear el producto', 'danger');
+        console.error('Error en la creación del producto:', error);
       }
     });
   }
+
+  //evento multiple
+  handleMouseDown(event: MouseEvent) {
+    event.preventDefault();
+    const select = event.target as HTMLSelectElement;
+    const option = event.target as HTMLOptionElement;
+    
+    if (option.selected) {
+      select.multiple = false;
+      option.selected = false;
+    } else {
+      select.multiple = true;
+      option.selected = true;
+    }
+  }
+  
+  handleClick(event: MouseEvent) {
+    const option = event.target as HTMLOptionElement;
+    if (option.selected) {
+      option.selected = false;
+    } else {
+      option.selected = true;
+    }
+  }
+
   
   
 }
