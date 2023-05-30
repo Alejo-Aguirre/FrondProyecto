@@ -1,42 +1,44 @@
 <div class="card p-5">
   <form #f="ngForm" (ngSubmit)="crearProducto()">
     <div class="mb-3 row">
-      <label class="col-sm-2 col-form-label">Código: </label>
+      <label class="col-sm-2 col-form-label">Código:</label>
       <div class="col-sm-10">
-        <input type="text" name="idPersona" [(ngModel)]="producto.idPersona" required />
+        <input type="text" name="idPersona" [(ngModel)]="producto.idPersona" required class="form-control" />
       </div>
     </div>
     <div class="mb-3 row">
-      <label class="col-sm-2 col-form-label">Nombre del producto: </label>
+      <label class="col-sm-2 col-form-label">Nombre del producto:</label>
       <div class="col-sm-10">
-        <input type="text" name="nombreProducto" [(ngModel)]="producto.nombreProducto" required />
+        <input type="text" name="nombreProducto" [(ngModel)]="producto.nombreProducto" required class="form-control" />
       </div>
     </div>
     <div class="mb-3 row">
-      <label class="col-sm-2 col-form-label">Descripción: </label>
+      <label class="col-sm-2 col-form-label">Descripción:</label>
       <div class="col-sm-10">
-        <input type="text" name="descripcionProducto" [(ngModel)]="producto.descripcionProducto" required />
+        <input type="text" name="descripcionProducto" [(ngModel)]="producto.descripcionProducto" required
+          class="form-control" />
       </div>
     </div>
     <div class="mb-3 row">
-      <label class="col-sm-2 col-form-label">Stock: </label>
+      <label class="col-sm-2 col-form-label">Stock:</label>
       <div class="col-sm-10">
         <input type="number" name="unidadesDisponibles" [(ngModel)]="producto.unidadesDisponibles"
-          #unidadesInput="ngModel" required />
-        <div *ngIf="unidadesInput.touched && producto.unidadesDisponibles <= 0">Las unidades disponibles deben ser
-          mayores a 0</div>
+          #unidadesInput="ngModel" required class="form-control" />
+        <div *ngIf="unidadesInput.touched && producto.unidadesDisponibles <= 0" class="text-danger">Las unidades
+          disponibles deben ser mayores a 0</div>
       </div>
     </div>
     <div class="mb-3 row">
-      <label class="col-sm-2 col-form-label">Precio: </label>
+      <label class="col-sm-2 col-form-label">Precio:</label>
       <div class="col-sm-10">
-        <input type="number" name="precioActual" [(ngModel)]="producto.precioActual" #precioInput="ngModel" required />
-        <div *ngIf="precioInput.invalid && (precioInput.dirty || precioInput.touched)">Por favor ingrese un precio
-          válido</div>
+        <input type="number" name="precioActual" [(ngModel)]="producto.precioActual" #precioInput="ngModel" required
+          class="form-control" />
+        <div *ngIf="precioInput.invalid && (precioInput.dirty || precioInput.touched)" class="text-danger">Por favor
+          ingrese un precio válido</div>
       </div>
     </div>
     <div class="mb-3 row">
-      <label class="col-sm-2 col-form-label">Imagen: </label>
+      <label class="col-sm-2 col-form-label">Imagen:</label>
       <div class="col-sm-7">
         <input type="file" class="form-control" name="imagenes" (change)="onFileChange($event)" multiple />
       </div>
@@ -50,7 +52,7 @@
     <div class="form-group row">
       <label class="col-sm-2 col-form-label">Categorías:</label>
       <div class="col-sm-10">
-        <select name="categorias" class="form-control" [(ngModel)]="producto.categorias" multiple required size="4"
+        <select name="categorias" class="form-control" [(ngModel)]="producto.categorias" multiple required size="6"
           #categoriasSelect="ngModel">
           <option *ngFor="let categoria of categorias" [value]="categoria">{{ categoria }}</option>
         </select>
@@ -64,3 +66,5 @@
       {{ modoEdicion ? 'Guardar producto' : 'Crear producto' }}
     </button>
     <app-alerta [alerta]="alerta"></app-alerta>
+  </form>
+</div>

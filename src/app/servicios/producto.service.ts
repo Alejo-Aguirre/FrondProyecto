@@ -13,11 +13,10 @@ import { throwError } from 'rxjs';
 })
 export class ProductoService {
   private proURL = "http://localhost:8080/api/producto";
-  productos: ProductoGetDTO[];
+  productos: ProductoGetDTO[] = [];
 
   constructor(private http: HttpClient) {
     this.productos = [];
-
     
     this.productos.push(
       new ProductoGetDTO(
@@ -87,31 +86,32 @@ export class ProductoService {
         ["TECNOLOGIA", "FOTOGRAFIA"]
       )
     );
+     
 
+/*
     this.cargarProductos().subscribe(
       (productos: ProductoGetDTO[]) => {
-        this.productos.push(...productos);
+        this.productos = productos;
       },
       (error) => {
         console.error('Error al cargar los productos desde la base de datos:', error);
       }
     );
-    
-    // Agregar más productos aquí...
-
+    */
   }
-
+  
+/*
   private cargarProductos(): Observable<ProductoGetDTO[]> {
-    return this.http.get<ProductoGetDTO[]>(`${this.proURL}/listarproductos`).pipe(
+    return this.http.get<any>(`${this.proURL}/listarproductos`).pipe(
       catchError((error: any): Observable<ProductoGetDTO[]> => {
         console.error('Error al cargar los productos desde la base de datos. Se utilizarán los productos quemados.', error);
         return throwError('Error al cargar los productos');
       }),
-      map((productos: ProductoGetDTO[]) => {
-        return productos;
-      })
+      map((response: any) => response.productos) // Extraer los productos de la respuesta
     );
   }
+  */
+
   public crear(producto: ProductoDTO): Observable<MensajeDTO> {
     return this.http.post<MensajeDTO>(`${this.proURL}/crear`, producto);
   }
