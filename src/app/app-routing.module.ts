@@ -7,6 +7,7 @@ import { CrearProductoComponent } from './pagina/crear-producto/crear-producto.c
 import { BusquedaComponent } from './pagina/busqueda/busqueda.component';
 import { GestionProductosComponent } from './pagina/gestion-productos/gestion-productos.component';
 import { FiltrarProductosComponent } from './pagina/filtrar-productos/filtrar-productos.component';
+import { LoginGuard } from './guards/permiso.service';
 
 
 const routes: Routes = [
@@ -17,6 +18,8 @@ const routes: Routes = [
   { path: 'gestion-productos', component: GestionProductosComponent },
   { path: 'busqueda/:texto', component: BusquedaComponent },
   { path: 'productos/:categoria', component: FiltrarProductosComponent },
+  { path: "login", component: LoginComponent, canActivate: [LoginGuard] },
+  { path: "registro", component: RegistroComponent, canActivate: [LoginGuard] },
   { path: '**', pathMatch: 'full', redirectTo: '' },
 ];
 
