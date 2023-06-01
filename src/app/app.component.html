@@ -7,17 +7,10 @@
       </a>
       <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
         <li><a routerLink="" class="nav-link px-2 text-secondary">Inicio</a></li>
-        <li>
-          <div class="ms-lg-3">
-            <div class="form-group mb-0">
-              <label for="categoria" class="visually-hidden">Categoría:</label>
-              <select class="form-select" name="categoria" [(ngModel)]="selectedCategoria" (change)="seleccionarCategoria()" required>
-                <option value="" selected>Categoría</option>
-                <option *ngFor="let categoria of categorias" [value]="categoria">{{ categoria }}</option>
-              </select>
-            </div>
-          </div>
-        </li>
+        <button type="button" routerLink="/filtrar-productos" class="btn btn-primary">
+          <i class="fa-solid fa-filter"></i> Categorías
+        </button>
+        
         <li><a routerLink="/crear-producto" class="nav-link px-2 text-black">Crear Producto</a></li>
         <li><a routerLink="/gestion-productos" class="nav-link px-2 text-black">Mis productos</a></li>
         <li><a routerLink="/gestion-compras" class="nav-link px-2 text-black">Mis compras</a></li>
@@ -45,6 +38,30 @@
     </div>
   </div>
 </header>
+
+<ng-container *ngIf="mostrarProductos">
+  <div class="container mt-4">
+    <div class="row">
+      <div class="col-12">
+        <h2>Productos</h2>
+        <div class="row">
+          <div class="col-6 col-md-4 col-lg-3 mb-3" *ngFor="let producto of productos">
+            <!-- Aquí puedes mostrar los detalles del producto -->
+            <div class="card">
+              <img [src]="producto.imagenes" class="card-img-top" alt="Producto">
+              <div class="card-body">
+                <h5 class="card-title">{{ producto.nombre }}</h5>
+                <p class="card-text">{{ producto.descripcion }}</p>
+                <p class="card-text">Precio: {{ producto.precio }}</p>
+                <!-- Agrega otros detalles del producto si es necesario -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-container>
 
 <router-outlet></router-outlet>
 

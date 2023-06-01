@@ -10,24 +10,22 @@ import { FiltrarProductosComponent } from './pagina/filtrar-productos/filtrar-pr
 import { LoginGuard } from './guards/permiso.service';
 import { MisFavoritosComponent } from './pagina/mis-favoritos/mis-favoritos.component';
 
-
 const routes: Routes = [
   { path: '', component: InicioComponent },
-  { path: 'login', component: LoginComponent },
-  { path: 'registro', component: RegistroComponent },
+  { path: 'login', component: LoginComponent, canActivate: [LoginGuard] },
+  { path: 'registro', component: RegistroComponent, canActivate: [LoginGuard] },
   { path: 'mis-favoritos', component: MisFavoritosComponent },
   { path: 'crear-producto', component: CrearProductoComponent },
   { path: 'gestion-productos', component: GestionProductosComponent },
+  { path: 'filtrar-productos', component: FiltrarProductosComponent },
   { path: 'busqueda/:texto', component: BusquedaComponent },
-  { path: 'productos/:categoria', component: FiltrarProductosComponent },
-  { path: "login", component: LoginComponent, canActivate: [LoginGuard] },
-  { path: "registro", component: RegistroComponent, canActivate: [LoginGuard] },
+  { path: 'producto/:categoria', component: FiltrarProductosComponent },
   { path: '**', pathMatch: 'full', redirectTo: '' },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA] // Agrega CUSTOM_ELEMENTS_SCHEMA aquí
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class AppRoutingModule { }
