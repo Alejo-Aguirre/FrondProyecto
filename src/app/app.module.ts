@@ -14,6 +14,7 @@ import { FiltrarProductosComponent } from './pagina/filtrar-productos/filtrar-pr
 import { HttpClientModule } from '@angular/common/http';
 import { AlertaComponent } from './pagina/alerta/alerta.component';
 import { MisFavoritosComponent } from './pagina/mis-favoritos/mis-favoritos.component';
+import { CarritoComponent } from './pagina/carrito/carrito.component';
 
 
 
@@ -28,7 +29,8 @@ import { MisFavoritosComponent } from './pagina/mis-favoritos/mis-favoritos.comp
     GestionProductosComponent,
     FiltrarProductosComponent,
     AlertaComponent,
-    MisFavoritosComponent
+    MisFavoritosComponent,
+    CarritoComponent
     
   ],
   imports: [

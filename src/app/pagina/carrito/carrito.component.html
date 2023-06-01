@@ -1,0 +1,37 @@
+<div class="container mt-4">
+    <div *ngIf="productosCarrito.length > 0">
+      <h3>Productos en el carrito:</h3>
+      <div class="list-group">
+        <a href="#" class="list-group-item list-group-item-action" *ngFor="let producto of productosCarrito">
+          <div class="d-flex w-100 justify-content-between">
+            <div>
+              <img class="card-img-top" [src]="producto.imagenes[0]" alt="Imagen del producto" style="height: 100px; object-fit: contain;">
+            </div>
+            <div>
+              <h5 class="mb-1">{{ producto.nombre }}</h5>
+              <small>Precio: {{ producto.precio | currency }}</small>
+            </div>
+          </div>
+          <p class="mb-1">{{ producto.descripcion }}</p>
+          <p class="mb-1">Stock: {{ producto.unidades }}</p>
+          <!-- Otros detalles del producto en el carrito -->
+          <div class="d-flex justify-content-end">
+            <button class="btn btn-sm btn-outline-secondary" (click)="quitarProducto(producto)"><i class="bi bi-trash"></i></button>
+          </div>
+        </a>
+      </div>
+      <div class="text-end mt-4">
+        <h5>Subtotal: {{ calcularSubtotal() | currency }}</h5>
+        <h5>Total: {{ calcularTotal() | currency }}</h5>
+        <button class="btn btn-primary" (click)="comprar()">Comprar</button>
+      </div>
+    </div>
+    <div *ngIf="productosCarrito.length === 0" class="text-center">
+      <p>No hay productos en el carrito.</p>
+    </div>
+  
+    <div *ngIf="alerta" class="alert alert-{{ alerta.tipo }}" role="alert">
+      {{ alerta.mensaje }}
+    </div>
+  </div>
+  

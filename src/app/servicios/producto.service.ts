@@ -15,9 +15,11 @@ export class ProductoService {
   private proURL = "http://localhost:8080/api/producto";
   productos: ProductoGetDTO[] = [];
   favoritos: ProductoGetDTO[] = [];
+  carrito: ProductoGetDTO[] = [];
 
   constructor(private http: HttpClient) {
     this.productos = [];
+    
     
     this.productos.push(
       new ProductoGetDTO(
@@ -87,6 +89,43 @@ export class ProductoService {
         ["TECNOLOGIA", "FOTOGRAFIA"]
       )
     );
+    this.productos.push(
+      new ProductoGetDTO(
+        7,
+        "PlayStation 5",
+        "Consola de última generación con gráficos de alta calidad y gran rendimiento.",
+        499990,
+        10,
+        ["https://cloudfront-us-east-1.images.arcpublishing.com/semana/6C6PRPOQNZCGZBNCLL6ZVEXAL4.jpg"],
+        ["VIDEOJUEGOS", "TECNOLOGIA"]
+      )
+    );
+    
+    this.productos.push(
+      new ProductoGetDTO(
+        8,
+        "Nintendo Switch",
+        "Consola híbrida que permite jugar tanto en casa como en modo portátil.",
+        299990,
+        8,
+        ["https://http2.mlstatic.com/D_NQ_NP_2X_919090-MCO31111792328_062019-F.webp"],
+        ["VIDEOJUEGOS", "TECNOLOGIA"]
+      )
+    );
+
+    this.productos.push(
+      new ProductoGetDTO(
+        9,
+        "El Gran Gatsby",
+        "Novela clásica escrita por F. Scott Fitzgerald que retrata la vida en la década de 1920.",
+        15900,
+        10,
+        ["https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQVCP5jV16BHBifyrSdAhXBxMX9EeqsogTMpw&usqp=CAU"],
+        ["LIBROS"]
+      )
+    );
+    
+    
      
 
 /*
@@ -138,6 +177,10 @@ export class ProductoService {
   agregarFavorito(producto: ProductoGetDTO) {
     this.favoritos.push(producto);
   }
+  agregarCarrito(producto: ProductoGetDTO) {
+    this.carrito.push(producto);
+  }
+
 
   quitarFavorito(producto: ProductoGetDTO) {
     const index = this.favoritos.findIndex((p) => p.codigo === producto.codigo);
@@ -146,8 +189,20 @@ export class ProductoService {
     }
   }
 
+  quitarCarrito(producto: ProductoGetDTO) {
+    const index = this.productos.findIndex((p) => p.codigo === producto.codigo);
+    if (index !== -1) {
+      this.productos.splice(index, 1);
+    }
+  }
+  
+
   obtenerFavoritos(): ProductoGetDTO[] {
     return this.favoritos;
+  }
+
+  obtenerCarrito(): ProductoGetDTO[] {
+    return this.carrito;
   }
 
   esFavorito(producto: ProductoGetDTO): boolean {

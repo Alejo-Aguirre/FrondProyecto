@@ -27,6 +27,10 @@ export class InicioComponent implements OnInit {
     this.productoService.agregarFavorito(producto);
   }
 
+  agregarCarrito(producto: ProductoGetDTO) {
+    this.productoService.agregarCarrito(producto);
+  }
+
   quitarFavorito(producto: ProductoGetDTO) {
     this.productoService.quitarFavorito(producto);
   }

@@ -14,7 +14,7 @@ export class GestionProductosComponent implements OnInit {
   textoBtnEliminar: string;
   seleccionado!:ProductoGetDTO; 
    
-btnTexto:string = "";
+  btnTexto:string = "";
   iconTexto:string = "";
 
   constructor(private router: Router,private productoServicio: ProductoService) {

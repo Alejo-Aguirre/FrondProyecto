@@ -25,6 +25,7 @@
             <div class="btn-group">
               <a class="btn btn-sm btn-outline-primary" routerLink="/detalle-producto/{{ item.codigo }}" role="button">Ver detalle</a>
               <button class="btn btn-sm btn-outline-secondary" (click)="agregarFavorito(item)"><i class="bi bi-heart"></i></button>
+              <button class="btn btn-sm btn-outline-success" (click)="agregarCarrito(item)"><i class="bi bi-cart-plus"></i> Agregar al carrito</button>
             </div>
           </div>
         </div>
@@ -47,6 +48,7 @@
         <div class="d-flex justify-content-end">
           <a class="btn btn-sm btn-outline-primary me-2" routerLink="/detalle-producto/{{ item.codigo }}" role="button">Ver detalle</a>
           <button class="btn btn-sm btn-outline-secondary" (click)="agregarFavorito(item)"><i class="bi bi-heart"></i></button>
+          <button class="btn btn-sm btn-outline-success" (click)="agregarCarrito(item)"><i class="bi bi-cart-plus"></i> Agregar al carrito</button>
         </div>
       </a>
     </div>
