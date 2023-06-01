@@ -13,6 +13,7 @@ import { GestionProductosComponent } from './pagina/gestion-productos/gestion-pr
 import { FiltrarProductosComponent } from './pagina/filtrar-productos/filtrar-productos.component';
 import { HttpClientModule } from '@angular/common/http';
 import { AlertaComponent } from './pagina/alerta/alerta.component';
+import { MisFavoritosComponent } from './pagina/mis-favoritos/mis-favoritos.component';
 
 
 
@@ -26,7 +27,8 @@ import { AlertaComponent } from './pagina/alerta/alerta.component';
     BusquedaComponent,
     GestionProductosComponent,
     FiltrarProductosComponent,
-    AlertaComponent
+    AlertaComponent,
+    MisFavoritosComponent
     
   ],
   imports: [

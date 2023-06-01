@@ -21,7 +21,12 @@
         <li><a routerLink="/crear-producto" class="nav-link px-2 text-black">Crear Producto</a></li>
         <li><a routerLink="/gestion-productos" class="nav-link px-2 text-black">Mis productos</a></li>
         <li><a routerLink="/gestion-compras" class="nav-link px-2 text-black">Mis compras</a></li>
-        <li><a routerLink="" class="nav-link px-2 text-black">Carrito</a></li>
+        <li><a routerLink="" class="nav-link px-2 text-black"><i class="fa-solid fa-shopping-cart"></i></a></li>
+        <li>
+          <a routerLink="/mis-favoritos" class="nav-link px-2 text-black">
+            <i class="fa-solid fa-heart"></i> Favoritos
+          </a>
+        </li>
       </ul>
       <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search" (submit)="iraBusqueda(textoBusqueda.value)">
         <input #textoBusqueda type="search" class="form-control form-control-dark text-bg-dark" placeholder="Search..." aria-label="Search">
@@ -35,18 +40,13 @@
           <i class="fa-solid fa-user-plus"></i> Sign-up
         </button>
         
+        
       </div>
     </div>
   </div>
 </header>
 
 <router-outlet></router-outlet>
-
-
-
-
-
-
 
 
 

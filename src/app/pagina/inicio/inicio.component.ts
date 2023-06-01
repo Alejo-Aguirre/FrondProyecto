@@ -22,5 +22,17 @@ export class InicioComponent implements OnInit {
   changeView(mode: string) {
     this.viewMode = mode;
   }
+
+  agregarFavorito(producto: ProductoGetDTO) {
+    this.productoService.agregarFavorito(producto);
+  }
+
+  quitarFavorito(producto: ProductoGetDTO) {
+    this.productoService.quitarFavorito(producto);
+  }
+
+  esFavorito(producto: ProductoGetDTO): boolean {
+    return this.productoService.esFavorito(producto);
+  }
 }
 

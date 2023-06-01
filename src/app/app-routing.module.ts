@@ -8,12 +8,14 @@ import { BusquedaComponent } from './pagina/busqueda/busqueda.component';
 import { GestionProductosComponent } from './pagina/gestion-productos/gestion-productos.component';
 import { FiltrarProductosComponent } from './pagina/filtrar-productos/filtrar-productos.component';
 import { LoginGuard } from './guards/permiso.service';
+import { MisFavoritosComponent } from './pagina/mis-favoritos/mis-favoritos.component';
 
 
 const routes: Routes = [
   { path: '', component: InicioComponent },
   { path: 'login', component: LoginComponent },
   { path: 'registro', component: RegistroComponent },
+  { path: 'mis-favoritos', component: MisFavoritosComponent },
   { path: 'crear-producto', component: CrearProductoComponent },
   { path: 'gestion-productos', component: GestionProductosComponent },
   { path: 'busqueda/:texto', component: BusquedaComponent },

@@ -1,0 +1,30 @@
+<div class="container mt-4">
+    <h2>Mis Favoritos</h2>
+  
+    <div *ngIf="favoritos.length === 0" class="text-center">
+      <p>No tienes productos en tus favoritos.</p>
+    </div>
+  
+    <div class="row card-deck">
+      <div class="col-md-4" *ngFor="let favorito of favoritos">
+        <div class="card mb-4">
+          <img class="card-img-top" [src]="favorito.imagenes[0]" alt="Imagen del producto" style="height: 200px; object-fit: contain;">
+          <div class="card-body">
+            <h5 class="card-title">{{ favorito.nombre }}</h5>
+            <p class="card-text">{{ favorito.descripcion }}</p>
+            <p class="card-text">Precio: {{ favorito.precio | currency }}</p>
+            <p class="card-text">Stock: {{ favorito.unidades }}</p>
+            <span class="badge text-bg-primary me-2" *ngFor="let cat of favorito.categorias">{{ cat }}</span>
+            <hr />
+            <div class="d-flex justify-content-between align-items-center mt-3">
+              <div class="btn-group">
+                <a class="btn btn-sm btn-outline-primary" routerLink="/detalle-producto/{{ favorito.codigo }}" role="button">Ver detalle</a>
+              </div>
+              <button class="btn btn-sm btn-danger" (click)="quitarFavorito(favorito)">Quitar de favoritos</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

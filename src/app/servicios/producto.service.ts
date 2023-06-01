@@ -14,6 +14,7 @@ import { throwError } from 'rxjs';
 export class ProductoService {
   private proURL = "http://localhost:8080/api/producto";
   productos: ProductoGetDTO[] = [];
+  favoritos: ProductoGetDTO[] = [];
 
   constructor(private http: HttpClient) {
     this.productos = [];
@@ -132,6 +133,25 @@ export class ProductoService {
       });
     });
     return Array.from(categorias);
+  }
+
+  agregarFavorito(producto: ProductoGetDTO) {
+    this.favoritos.push(producto);
+  }
+
+  quitarFavorito(producto: ProductoGetDTO) {
+    const index = this.favoritos.findIndex((p) => p.codigo === producto.codigo);
+    if (index !== -1) {
+      this.favoritos.splice(index, 1);
+    }
+  }
+
+  obtenerFavoritos(): ProductoGetDTO[] {
+    return this.favoritos;
+  }
+
+  esFavorito(producto: ProductoGetDTO): boolean {
+    return this.favoritos.some((p) => p.codigo === producto.codigo);
   }
 
 
